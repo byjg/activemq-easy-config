@@ -16,7 +16,7 @@ networks:
 
   network_connector:
     hub:
-      to:
+      to: # Leave empty because there is no connection
     node1:
       to:
         - hub
