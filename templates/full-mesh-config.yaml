@@ -1,9 +1,9 @@
 brokers:
-  broker1: "static:(tcp://10.10.10.1:61616)"
-  broker2: "static:(tcp://10.10.10.2:61616)"
-  broker3: "static:(tcp://10.10.10.3:61616)"
-  broker4: "static:(tcp://10.10.10.4:61616)"
-  broker5: "static:(tcp://10.10.10.5:61616)"
+  broker1: "static:(tcp://broker1:61616)"
+  broker2: "static:(tcp://broker2:61616)"
+  broker3: "static:(tcp://broker3:61616)"
+  broker4: "static:(tcp://broker4:61616)"
+  broker5: "static:(tcp://broker5:61616)"
 
 networks:
   common_configuration:

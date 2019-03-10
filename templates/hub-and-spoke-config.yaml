@@ -1,9 +1,9 @@
 brokers:
-  hub: "static:(tcp://10.10.10.1:61616)"
-  node1: "static:(tcp://10.10.10.2:61616)"
-  node2: "static:(tcp://10.10.10.3:61616)"
-  node3: "static:(tcp://10.10.10.4:61616)"
-  node4: "static:(tcp://10.10.10.5:61616)"
+  hub: "static:(tcp://hub:61616)"
+  node1: "static:(tcp://node1:61616)"
+  node2: "static:(tcp://node2:61616)"
+  node3: "static:(tcp://node3:61616)"
+  node4: "static:(tcp://node4:61616)"
 
 networks:
   common_configuration:

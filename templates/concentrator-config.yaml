@@ -1,9 +1,9 @@
 brokers:
-  producer1: "static:(tcp://10.10.10.1:61616)"
-  producer2: "static:(tcp://10.10.10.2:61616)"
-  consumer1: "static:(tcp://10.10.10.3:61616)"
-  consumer2: "static:(tcp://10.10.10.4:61616)"
-  consumer3: "static:(tcp://10.10.10.5:61616)"
+  producer1: "static:(tcp://producer1:61616)"
+  producer2: "static:(tcp://producer2:61616)"
+  consumer1: "static:(tcp://consumer1:61616)"
+  consumer2: "static:(tcp://consumer2:61616)"
+  consumer3: "static:(tcp://consumer3:61616)"
 
 networks:
   common_configuration:

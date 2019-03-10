@@ -1,6 +1,6 @@
 brokers:
-  node1: "static:(tcp://10.10.10.1:61616)"
-  node2: "static:(tcp://10.10.10.2:61616)"
+  node1: "static:(tcp://node1:61616)"
+  node2: "static:(tcp://node2:61616)"
 
 networks:
   common_configuration:
