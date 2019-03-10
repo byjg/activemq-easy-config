@@ -16,7 +16,11 @@ class Yaml:
             _config = {**_config, **broker_config}
         return _config
 
-    def create(self, path):
+    def create(self, path, docker_prefix):
+        script = ["#!/bin/bash", ""]
+        script2 = ["#!/bin/bash", "", "docker network create activemq", ""]
+        admin_port = 8161
+        jsm_port = 61616
         for key, value in self.config_yaml["networks"]["network_connector"].items():
             activemq = ActiveMQConfig(self.xmlfilename)
             print(key)
@@ -27,5 +31,9 @@ class Yaml:
                 broker_data=value["to"]
             )
             activemq.save(path + "/" + key + ".xml")
+            script.append(f"docker build -t {docker_prefix}/{key} --build-arg ACTIVEMQ_CONFIG={key}.xml -f Dockerfile .")
+            script2.append(f"docker run --network activemq --name {key} -p {admin_port}:8161 -p {jsm_port}:61616 --rm -d {docker_prefix}/{key}")
+            admin_port += 1
+            jsm_port += 1
 
-
+        return [script, script2]

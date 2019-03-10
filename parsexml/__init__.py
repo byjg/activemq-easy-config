@@ -30,7 +30,7 @@ class ActiveMQConfig:
         self.broker.setAttribute("brokerName", broker_name)
 
         if broker_data is None:
-            return
+            broker_data = []
 
         for broker in broker_data:
             if broker is None:
