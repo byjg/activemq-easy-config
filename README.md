@@ -55,11 +55,19 @@ node2.xml
 run.sh
 ```
 
-If can run `build.sh` to build the docker images and `run.sh` to run the containers in your local machine. 
+You can run `build.sh` to build the docker images and `run.sh` to run the containers in your local machine. 
 
-This docker image can easily adapted to run on Kubernetes, Docker Swarm or ECS.
+The docker image created can easily adapted to run on Kubernetes, Docker Swarm or ECS.
 
-In the folder `check` you can run a simple producer/consumer to check the communication.  
+In the folder `check` you can run a simple producer/consumer to check the communication.
+
+# Installing
+
+Just clone the repository.
+
+```bash
+git clone git@github.com:byjg/activemq-easy-config
+```  
 
 # To Do
 
