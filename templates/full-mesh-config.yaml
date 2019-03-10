@@ -11,7 +11,6 @@ networks:
     consumer_ttl: "1"
     duplex: "false"
     message_ttl: "-1"
-    physical_name: ">"
     user_name: "admin"
 
   network_connector:

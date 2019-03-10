@@ -8,10 +8,9 @@ brokers:
 networks:
   common_configuration:
     conduit_subscriptions: "true"
-    consumer_ttl: "1"
+    consumer_ttl: "2"
     duplex: "true"
     message_ttl: "-1"
-    physical_name: ">"
     user_name: "admin"
 
   network_connector:

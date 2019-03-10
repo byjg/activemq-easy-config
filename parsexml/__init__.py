@@ -37,13 +37,11 @@ class ActiveMQConfig:
                 continue
             for cname, connector in {"Q": "queue", "T": "topic"}.items():
                 network_connector = self.config_dom.createElement("networkConnector")
-                network_connector.setAttribute("conduitSubscriptions", config["conduit_subscriptions"])
-                network_connector.setAttribute("consumerTTL", config["consumer_ttl"])
-                network_connector.setAttribute("duplex", config["duplex"])
-                network_connector.setAttribute("messageTTL", config["message_ttl"])
                 network_connector.setAttribute("name", cname + ":" + broker_name + "--" + broker)
                 network_connector.setAttribute("uri", broker_map[broker])
-                network_connector.setAttribute("userName", config["user_name"])
+
+                for attribute, value in config.items():
+                    network_connector.setAttribute(self.to_camel_case(attribute), value)
 
                 excluded_destinations = self.config_dom.createElement("excludedDestinations")
                 destination = self.config_dom.createElement("queue" if connector == "topic" else "topic")
@@ -52,3 +50,9 @@ class ActiveMQConfig:
                 excluded_destinations.appendChild(destination)
                 network_connector.appendChild(excluded_destinations)
                 self.network_connectors.appendChild(network_connector)
+
+    def to_camel_case(self, snake_str):
+        components = snake_str.split('_')
+        # We capitalize the first letter of each component except the first one
+        # with the 'title' method and join them together.
+        return components[0] + ''.join(x.title() for x in components[1:]).replace("Ttl", "TTL")
