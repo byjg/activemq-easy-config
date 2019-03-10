@@ -16,7 +16,7 @@ class Yaml:
             _config = {**_config, **broker_config}
         return _config
 
-    def create(self):
+    def create(self, path):
         for key, value in self.config_yaml["networks"]["network_connector"].items():
             activemq = ActiveMQConfig(self.xmlfilename)
             print(key)
@@ -26,6 +26,6 @@ class Yaml:
                 broker_name=key,
                 broker_data=value["to"]
             )
-            activemq.save("/tmp/" + key + ".xml")
+            activemq.save(path + "/" + key + ".xml")
 
 

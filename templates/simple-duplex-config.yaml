@@ -1,0 +1,20 @@
+brokers:
+  node1: "static:(tcp://10.10.10.1:61616)"
+  node2: "static:(tcp://10.10.10.2:61616)"
+
+networks:
+  common_configuration:
+    conduit_subscriptions: "true"
+    consumer_ttl: "1"
+    duplex: "true"
+    message_ttl: "-1"
+    physical_name: ">"
+    user_name: "admin"
+
+  network_connector:
+    node1:
+      to:
+        - node2
+    node2:
+      to:
+        - node1

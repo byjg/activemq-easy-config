@@ -9,7 +9,7 @@ networks:
   common_configuration:
     conduit_subscriptions: "true"
     consumer_ttl: "1"
-    duplex: "true"
+    duplex: "false"
     message_ttl: "-1"
     physical_name: ">"
     user_name: "admin"
@@ -17,27 +17,32 @@ networks:
   network_connector:
     broker1:
       to:
+        - broker2
         - broker3
         - broker4
         - broker5
-      config:
-        duplex: "false"
     broker2:
       to:
+        - broker1
         - broker3
         - broker4
         - broker5
-      config:
-        duplex: "false"
     broker3:
       to:
+        - broker1
+        - broker2
         - broker4
+        - broker5
     broker4:
       to:
+        - broker1
+        - broker2
+        - broker3
         - broker5
     broker5:
       to:
+        - broker1
+        - broker2
         - broker3
-
-
+        - broker4
 

@@ -1,0 +1,43 @@
+brokers:
+  producer1: "static:(tcp://10.10.10.1:61616)"
+  producer2: "static:(tcp://10.10.10.2:61616)"
+  consumer1: "static:(tcp://10.10.10.3:61616)"
+  consumer2: "static:(tcp://10.10.10.4:61616)"
+  consumer3: "static:(tcp://10.10.10.5:61616)"
+
+networks:
+  common_configuration:
+    conduit_subscriptions: "true"
+    consumer_ttl: "1"
+    duplex: "true"
+    message_ttl: "-1"
+    physical_name: ">"
+    user_name: "admin"
+
+  network_connector:
+    producer1:
+      to:
+        - consumer1
+        - consumer2
+        - consumer3
+      config:
+        duplex: "false"
+    producer2:
+      to:
+        - consumer1
+        - consumer2
+        - consumer3
+      config:
+        duplex: "false"
+    consumer1:
+      to:
+        - consumer2
+    consumer2:
+      to:
+        - consumer3
+    consumer3:
+      to:
+        - consumer1
+
+
+

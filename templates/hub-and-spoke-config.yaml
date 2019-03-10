@@ -1,0 +1,31 @@
+brokers:
+  hub: "static:(tcp://10.10.10.1:61616)"
+  node1: "static:(tcp://10.10.10.2:61616)"
+  node2: "static:(tcp://10.10.10.3:61616)"
+  node3: "static:(tcp://10.10.10.4:61616)"
+  node4: "static:(tcp://10.10.10.5:61616)"
+
+networks:
+  common_configuration:
+    conduit_subscriptions: "true"
+    consumer_ttl: "1"
+    duplex: "true"
+    message_ttl: "-1"
+    physical_name: ">"
+    user_name: "admin"
+
+  network_connector:
+    hub:
+      to:
+    node1:
+      to:
+        - hub
+    node2:
+      to:
+        - hub
+    node3:
+      to:
+        - hub
+    node4:
+      to:
+        - hub

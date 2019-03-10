@@ -27,16 +27,21 @@ class ActiveMQConfig:
         file_handle.close()
 
     def add_network_connector(self, config, broker_map, broker_name, broker_data):
-        connector_types = ["queue", "topic"]
+        self.broker.setAttribute("brokerName", broker_name)
+
+        if broker_data is None:
+            return
+
         for broker in broker_data:
-            self.broker.setAttribute("brokerName", broker_name)
-            for connector in connector_types:
+            if broker is None:
+                continue
+            for cname, connector in {"Q": "queue", "T": "topic"}.items():
                 network_connector = self.config_dom.createElement("networkConnector")
                 network_connector.setAttribute("conduitSubscriptions", config["conduit_subscriptions"])
                 network_connector.setAttribute("consumerTTL", config["consumer_ttl"])
                 network_connector.setAttribute("duplex", config["duplex"])
                 network_connector.setAttribute("messageTTL", config["message_ttl"])
-                network_connector.setAttribute("name", connector + "_" + broker_name + "_" + broker)
+                network_connector.setAttribute("name", cname + ":" + broker_name + "--" + broker)
                 network_connector.setAttribute("uri", broker_map[broker])
                 network_connector.setAttribute("userName", config["user_name"])
 
