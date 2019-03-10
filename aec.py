@@ -6,7 +6,7 @@ from shutil import copyfile
 
 parser = argparse.ArgumentParser(description='ActiveMQ Easy Config (AEC) v1.0')
 parser.add_argument('-c', '--config', help='Configuration file in yaml', required=True)
-parser.add_argument('-x', '--xml', help='ActiveMQ Configuration file', required=True)
+parser.add_argument('-a', '--activemq', help='ActiveMQ Configuration file', required=True)
 parser.add_argument('-s', '--save-to', help='Save the files to the specified folder (defaults to current directory)',
                     required=False, default=os.getcwd())
 parser.add_argument('-r', '--registry', help='The name of the registry and the folder. e.g. docker.io/byjg',
@@ -16,7 +16,7 @@ parser.add_argument('-d', '--dockerfile', help='The path of the Dockerfile',
 
 args = parser.parse_args()
 
-y = Yaml(args.config, args.xml)
+y = Yaml(args.config, args.activemq)
 
 os.makedirs(args.save_to, exist_ok=True)
 

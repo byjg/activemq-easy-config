@@ -7,7 +7,7 @@ class Yaml:
     def __init__(self, filename, xmlfilename):
         with open(filename, 'r') as content_file:
             self.config_yaml = yaml.load(content_file.read())
-        print(self.config_yaml)
+        # print(self.config_yaml)
         self.xmlfilename = xmlfilename
 
     def config(self, broker_config):
