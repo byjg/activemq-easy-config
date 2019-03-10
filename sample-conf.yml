@@ -1,0 +1,43 @@
+brokers:
+  broker1: "static:(tcp://10.10.10.1:61616)"
+  broker2: "static:(tcp://10.10.10.2:61616)"
+  broker3: "static:(tcp://10.10.10.3:61616)"
+  broker4: "static:(tcp://10.10.10.4:61616)"
+  broker5: "static:(tcp://10.10.10.5:61616)"
+
+networks:
+  common_configuration:
+    conduit_subscriptions: "true"
+    consumer_ttl: "1"
+    duplex: "true"
+    message_ttl: "-1"
+    physical_name: ">"
+    user_name: "admin"
+
+  network_connector:
+    broker1:
+      to:
+        - broker3
+        - broker4
+        - broker5
+      config:
+        duplex: "false"
+    broker2:
+      to:
+        - broker3
+        - broker4
+        - broker5
+      config:
+        duplex: "false"
+    broker3:
+      to:
+        - broker4
+    broker4:
+      to:
+        - broker5
+    broker5:
+      to:
+        - broker3
+
+
+
