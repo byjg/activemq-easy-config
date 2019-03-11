@@ -3,7 +3,7 @@
 This project aims a easy way to setup a network of ActiveMQ brokers. You can change easily the topology and this 
 script will create the configurations based on your setup. ActiveMQ Easy Config will produce for you:
 
-- A `activemq.xml` file for each broker with the specific configuration for the broker
+- An `activemq.xml` file for each broker with the specific configuration for the broker
 - A Docker image for each broker to easy adapt in your container orchestrator.
 - A script for run the docker image locally in order to test your network locally.
  
@@ -49,7 +49,7 @@ networks:
         - node1
 ``` 
 
-The first definition topic in the yaml we will define the broker and the your respective connection. 
+The first topic in the yaml will define the broker and your respective connection. 
 If you intend to use docker, the address can be the broker name. 
 
 You can see a lot of examples of network of brokers in the directory `templates`. In the same directory
