@@ -12,9 +12,9 @@ parser.add_argument('-a', '--activemq', help='ActiveMQ Configuration file', requ
 parser.add_argument('-s', '--save-to', help='Save the files to the specified folder (defaults to current directory)',
                     required=False, default=os.getcwd())
 parser.add_argument('-r', '--registry', help='The name of the registry and the folder. e.g. docker.io/byjg',
-                    required=False, default="example")
+                    required=False, default=None)
 parser.add_argument('-d', '--dockerfile', help='The path of the Dockerfile',
-                    required=False, default="templates/Dockerfile")
+                    required=False, default=None)
 
 args = parser.parse_args()
 
@@ -24,15 +24,16 @@ os.makedirs(args.save_to, exist_ok=True)
 
 [script, script2] = y.create(args.save_to, args.registry)
 
-handler = open(f"{args.save_to}/build.sh", "w")
-handler.write("\n".join(script))
-handler.close()
+if args.registry is not None and args.dockerfile is not None:
+    handler = open(f"{args.save_to}/build.sh", "w")
+    handler.write("\n".join(script))
+    handler.close()
 
-handler = open(f"{args.save_to}/run.sh", "w")
-handler.write("\n".join(script2))
-handler.close()
+    handler = open(f"{args.save_to}/run.sh", "w")
+    handler.write("\n".join(script2))
+    handler.close()
 
-copyfile(args.dockerfile, f"{args.save_to}/Dockerfile")
+    copyfile(args.dockerfile, f"{args.save_to}/Dockerfile")
 
 
 # print(config_dom.toprettyxml(indent="  "))
