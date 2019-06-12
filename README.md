@@ -31,19 +31,30 @@ brokers:
 
 networks:
   common_configuration:
-    conduit_subscriptions: "true"
-    consumer_ttl: "1"
-    duplex: "true"
-    message_ttl: "-1"
-    physical_name: ">"
-    user_name: "admin"
+    queue:
+      conduit_subscriptions: "false"
+      consumer_ttl: "1"
+      duplex: "true"
+      message_ttl: "-1"
+      physical_name: ">"
+      user_name: "admin"
+    topic:
+      conduit_subscriptions: "true"
+      consumer_ttl: "1"
+      duplex: "true"
+      message_ttl: "-1"
+      physical_name: ">"
+      user_name: "admin"
 
   network_connector:
     node1:
       to:
         - node2
       config:
-        duplex: "false"
+        queue:
+          duplex: "false"
+        topic:
+          _ignore: "true"
     node2:
       to:
         - node1

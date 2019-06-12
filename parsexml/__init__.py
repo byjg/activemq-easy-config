@@ -36,11 +36,16 @@ class ActiveMQConfig:
             if broker is None:
                 continue
             for cname, connector in {"Q": "queue", "T": "topic"}.items():
+                common_config = (config[connector] if connector in config else {})
+
+                if "_ignore" in common_config and common_config["_ignore"] == "true":
+                    continue
+
                 network_connector = self.config_dom.createElement("networkConnector")
-                network_connector.setAttribute("name", cname + ":" + broker_name + "--" + broker)
+                network_connector.setAttribute("name", cname + "_" + broker_name + "_to_" + broker)
                 network_connector.setAttribute("uri", broker_map[broker])
 
-                for attribute, value in config.items():
+                for attribute, value in common_config.items():
                     network_connector.setAttribute(self.to_camel_case(attribute), value)
 
                 excluded_destinations = self.config_dom.createElement("excludedDestinations")

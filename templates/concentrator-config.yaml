@@ -7,11 +7,18 @@ brokers:
 
 networks:
   common_configuration:
-    conduit_subscriptions: "true"
-    consumer_ttl: "1"
-    duplex: "true"
-    message_ttl: "-1"
-    user_name: "admin"
+    queue:
+      conduit_subscriptions: "false"
+      consumer_ttl: "1"
+      duplex: "true"
+      message_ttl: "-1"
+      user_name: "admin"
+    topic:
+      conduit_subscriptions: "true"
+      consumer_ttl: "1"
+      duplex: "true"
+      message_ttl: "-1"
+      user_name: "admin"
 
   network_connector:
     producer1:
@@ -20,14 +27,20 @@ networks:
         - consumer2
         - consumer3
       config:
-        duplex: "false"
+        queue:
+          duplex: "false"
+        topic:
+          duplex: "false"
     producer2:
       to:
         - consumer1
         - consumer2
         - consumer3
       config:
-        duplex: "false"
+        queue:
+          duplex: "false"
+        topic:
+          duplex: "false"
     consumer1:
       to:
         - consumer2

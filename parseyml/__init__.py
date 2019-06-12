@@ -13,7 +13,8 @@ class Yaml:
     def config(self, broker_config):
         _config = self.config_yaml["networks"]["common_configuration"]
         if broker_config is not None and broker_config:
-            _config = {**_config, **broker_config}
+            _config["queue"] = {**_config["queue"], **broker_config["queue"]}
+            _config["topic"] = {**_config["topic"], **broker_config["topic"]}
         return _config
 
     def create(self, path, docker_prefix):
