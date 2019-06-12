@@ -78,11 +78,14 @@ python aec.py \
 
 And you'll get the follow files as result:
 
-- build.sh
-- Dockerfile
 - node1.xml
 - node2.xml
+
+Optionally if you pass a path to a `Dockerfile` and a registry name, the system will create:
+
 - run.sh
+- build.sh
+- Dockerfile
 
 You can run `build.sh` to build the docker images and `run.sh` to run the containers in your local machine. 
 
@@ -91,6 +94,15 @@ The docker image created can easily adapted to run on Kubernetes, Docker Swarm o
 In the folder `check` you can run a simple producer/consumer to check the communication.
 
 # Installing
+
+
+## Recommended:
+
+```bash
+pip install aec
+```
+
+## get from source
 
 Just clone the repository.
 
@@ -103,8 +115,6 @@ git clone git@github.com:byjg/activemq-easy-config
 Help here is appreciate :)
 
 - This configuration can be expanded to other features on ActiveMQ.
-- Example of configuration with `failover:` and `masterslave:`
-- Example with `ssl:`
 - K8s implementation
 - Docker swarm implementation
 - ECS implementation 
