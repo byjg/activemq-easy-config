@@ -27,7 +27,8 @@ class ActiveMQConfig:
         file_handle.close()
 
     def add_network_connector(self, config, broker_map, broker_name, broker_data):
-        self.broker.setAttribute("brokerName", broker_name)
+        if "set_broker_name" not in config or ("set_broker_name" in config and config["set_broker_name"] == "true"):
+            self.broker.setAttribute("brokerName", broker_name)
 
         if broker_data is None:
             broker_data = []

@@ -31,6 +31,7 @@ brokers:
 
 networks:
   common_configuration:
+    set_broker_name: "false"
     queue:
       conduit_subscriptions: "false"
       consumer_ttl: "1"
