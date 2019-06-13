@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='aec',
-    version='0.1.2',
+    version='0.1.3',
     scripts=['aec'],
     author="Joao Gilberto Magalhaes",
     author_email="joao@byjg.com.br",
